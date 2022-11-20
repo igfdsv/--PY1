@@ -11,7 +11,7 @@ def csv_to_list_dict(filename: str,
     lines = str_data.split(new_line)
     headers = lines[0].split(delimiter)
     res = []
-    for l in lines[1:]:
+    for l in filter(None, lines[1:]): #filter to remove empty "lines"
         values = l.split(delimiter)
         row = {headers[i]: v for i, v in enumerate(values)}
         res.append(row)
